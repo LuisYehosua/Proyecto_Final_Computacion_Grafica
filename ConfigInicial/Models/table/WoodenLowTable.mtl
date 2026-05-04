@@ -1,0 +1,14 @@
+# Blender 5.0.1 MTL File: 'Native.blend'
+# www.blender.org
+
+newmtl Wooden_Low_Table
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd F:/3D-Blender-Libs/_Exports/_ToSell/LowTable/SimpleBake_Bakes/Wooden Low Table/WoodenLowTable_Diffuse.jpg
+map_Ns F:/3D-Blender-Libs/_Exports/_ToSell/LowTable/SimpleBake_Bakes/Wooden Low Table/WoodenLowTable_Roughness.jpg
+map_refl F:/3D-Blender-Libs/_Exports/_ToSell/LowTable/SimpleBake_Bakes/Wooden Low Table/WoodenLowTable_Metalness.jpg
+map_Bump -bm 1.000000 F:/3D-Blender-Libs/_Exports/_ToSell/LowTable/SimpleBake_Bakes/Wooden Low Table/WoodenLowTable_Normal.jpg
