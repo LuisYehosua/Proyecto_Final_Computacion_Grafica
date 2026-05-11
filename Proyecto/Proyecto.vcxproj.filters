@@ -46,8 +46,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ProyectoFinal.cpp">
-      <Filter>Archivos de origen\Shader</Filter>
+    <ClCompile Include="Posiciones.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
