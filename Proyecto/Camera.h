@@ -130,6 +130,24 @@ public:
 		return this->front;
 	}
 
+	// === NUEVOS METODOS para walking simulator ===
+	void SetPositionY(GLfloat y)
+	{
+		this->position.y = y;
+	}
+
+	GLfloat GetPitch()
+	{
+		return this->pitch;
+	}
+
+	void SetPitch(GLfloat p)
+	{
+		this->pitch = p;
+		this->updateCameraVectors();
+	}
+	// =============================================
+
 private:
 	// Camera Attributes
 	glm::vec3 position;
