@@ -283,47 +283,50 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Facultad.Draw(lightingShader);
 
-		//Cuadrupedo
-		model = modelTemp;
-		model = glm::translate(model, glm::vec3(-0.083f, -0.057f, -0.231f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Dog.Draw(lightingShader);
-
-		//Humanoid
-		model = modelTemp;
-		model = glm::translate(model, glm::vec3(-0.083f, -0.057f, -0.231f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Humanoide.Draw(lightingShader);
-
-		//Ingeniera
-		model = modelTemp;
-		model = glm::translate(model, glm::vec3(-1.0f, -1.0f, -1.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Ingeniera.Draw(lightingShader);
-
-		//Ingeniera
-		model = modelTemp;
-		model = glm::translate(model, glm::vec3(-1.0f, -1.0f, -1.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Multitud.Draw(lightingShader);
-
 		//Stands
 		model = modelTemp;
-		model = glm::translate(model, glm::vec3(1.0f, -1.0f, 0.5f));
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 3.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Stand4.Draw(lightingShader);
 
 		//
 		model = modelTemp;
-		model = glm::translate(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(9.0f, 0.0f, -11.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 3.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Stand1.Draw(lightingShader);
 
 		//
 		model = modelTemp;
-		model = glm::translate(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(9.0f, 0.0f, 3.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 3.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Stand3.Draw(lightingShader);
+
+		//Humanoid
+		model = modelTemp;
+		model = glm::translate(model, glm::vec3(-0.083f, 0.0f, -0.231f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Humanoide.Draw(lightingShader);
+
+		//Cuadrupedo
+		model = modelTemp;
+		model = glm::translate(model, glm::vec3(2.0f, 1.0f, 0.231f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Dog.Draw(lightingShader);
+
+		//Ingeniera
+		model = modelTemp;
+		model = glm::translate(model, glm::vec3(1.0f, 3.0f, -1.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Ingeniera.Draw(lightingShader);
+
+		//Multutud
+		model = modelTemp;
+		model = glm::translate(model, glm::vec3(10.0f, 10.0f, 10.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Multitud.Draw(lightingShader);
 
 
 		//Carga de modelo 
