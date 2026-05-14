@@ -199,7 +199,7 @@ float robotPosZ = 0.0f;
 float robotRotY = 0.0f;
 
 #define MAX_FRAMES_ROBOT 250
-int iMaxStepsRobot = 190;
+int iMaxStepsRobot = 60;
 int iCurrStepsRobot = 0;
 
 typedef struct {
@@ -409,12 +409,12 @@ float pBLeftLeg = 0.0f;
 float pBRightLeg = 0.0f;
 float pBodyRotZ = 0.0f;
 float pRotDog = 0.0f;
-float pPosX = 5.0f;
-float pPosY = 1.5f;
+float pPosX = 2.0f;
+float pPosY = 1.7f;
 float pPosZ = 3.0f;
 
 #define MAX_FRAMES_PERRO 250
-int iMaxStepsPerro = 190;
+int iMaxStepsPerro = 60;
 int iCurrStepsPerro = 0;
 
 typedef struct {
@@ -627,8 +627,10 @@ int main()
 	Model Mujer((char*)"Models/stands/Stand3.obj");
 	Model Hombre((char*)"Models/stands/Stand4.obj");
 	Model Stand1((char*)"Models/LugarStand1FINAL.obj");
+	Model Stand2((char*)"Models/LugarStandFINAL.obj");
 	Model Stand3((char*)"Models/LugarStand3FINAL.obj");
 	Model Stand4((char*)"Models/LugarStand4FINAL.obj");
+	Model LIRA((char*)"Models/Extras/Cuadro/LIRA.obj");
 
 	// Humanoid
 	Model Cuerpo((char*)"Models/Humanoid/Cuerpo.obj");
@@ -851,6 +853,21 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Stand3.Draw(lightingShader);
 
+		// Stand 2
+		model = modelTemp;
+		model = glm::translate(model, glm::vec3(8.0f, 0.0f, 12.0f));
+		model = glm::scale(model, glm::vec3(2.8f, 4.0f, 2.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Stand2.Draw(lightingShader);
+
+		//Cuadro
+		model = modelTemp;
+		model = glm::translate(model, glm::vec3(8.0f, 5.0f, 3.0f));
+		model = glm::rotate(model, 3.15f, glm::vec3(0.0f, -1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		LIRA.Draw(lightingShader);
+
 		//Ingeniera
 		model = modelTemp;
 		model = glm::translate(model, glm::vec3(22.0f, 0.0f, -1.0f));
@@ -942,10 +959,6 @@ int main()
 
 		perroBase = glm::translate(perroBase,
 			glm::vec3(pPosX, pPosY, pPosZ));
-
-		perroBase = glm::rotate(perroBase,
-			glm::radians(robotRotY),
-			glm::vec3(0.0f, 1.0f, 0.0f));
 
 		perroBase = glm::rotate(perroBase,
 			glm::radians(pRotDog),
@@ -1160,14 +1173,14 @@ void DoMovement()
 	if (keys[GLFW_KEY_F7]) pBLeftLeg += 1.0f;
 	if (keys[GLFW_KEY_F8]) pBLeftLeg -= 1.0f;
 	// Adelante / atras
-	if (keys[GLFW_KEY_I]) pPosZ -= 0.05f;
-	if (keys[GLFW_KEY_O]) pPosZ += 0.05f;
+	if (keys[GLFW_KEY_F9]) pPosZ -= 0.05f;
+	if (keys[GLFW_KEY_F10]) pPosZ += 0.05f;
 	// Izquierda / derecha
 	if (keys[GLFW_KEY_9]) pPosX -= 0.05f;
 	if (keys[GLFW_KEY_0]) pPosX += 0.05f;
 	// Arriba / abajo
 	if (keys[GLFW_KEY_J]) pPosY += 0.05f;
-	if (keys[GLFW_KEY_L]) pPosY -= 0.05f;
+	if (keys[GLFW_KEY_U]) pPosY -= 0.05f;
 	// Rotación
 	if (keys[GLFW_KEY_P]) pRotDog += 1.0f;
 	if (keys[GLFW_KEY_SEMICOLON]) pRotDog -= 1.0f;
@@ -1191,12 +1204,12 @@ void DoMovement()
 	if (keys[GLFW_KEY_D] || keys[GLFW_KEY_RIGHT])
 		camera.ProcessKeyboard(RIGHT, walkDelta);
 
-	if (keys[GLFW_KEY_T]) pointLightPositions[0].x += 0.01f;
-	if (keys[GLFW_KEY_G]) pointLightPositions[0].x -= 0.01f;
-	if (keys[GLFW_KEY_Y]) pointLightPositions[0].y += 0.01f;
-	if (keys[GLFW_KEY_H]) pointLightPositions[0].y -= 0.01f;
-	if (keys[GLFW_KEY_U]) pointLightPositions[0].z -= 0.1f;
-	if (keys[GLFW_KEY_J]) pointLightPositions[0].z += 0.01f;
+	//if (keys[GLFW_KEY_T]) pointLightPositions[0].x += 0.01f;
+	//if (keys[GLFW_KEY_G]) pointLightPositions[0].x -= 0.01f;
+	//if (keys[GLFW_KEY_Y]) pointLightPositions[0].y += 0.01f;
+	//if (keys[GLFW_KEY_H]) pointLightPositions[0].y -= 0.01f;
+	//if (keys[GLFW_KEY_U]) pointLightPositions[0].z -= 0.1f;
+	//if (keys[GLFW_KEY_J]) pointLightPositions[0].z += 0.01f;
 
 	// Cabeceo al caminar
 	if (isWalking)
@@ -1260,7 +1273,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 
 	// F  -> guardar animación robot a archivo
 	if (key == GLFW_KEY_F && action == GLFW_PRESS)
-		saveToFileRobot("animacion_robot.txt");
+		saveToFileRobot("animacion_robot2.txt");
 
 	// R  -> cargar animación robot desde archivo
 	if (key == GLFW_KEY_R && action == GLFW_PRESS)
@@ -1268,15 +1281,15 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 
 	// -- Perro keyframe controls --
 
-	// F9  -> guardar keyframe del perro
-	if (key == GLFW_KEY_F9 && action == GLFW_PRESS)
+	// H  -> guardar keyframe del perro
+	if (key == GLFW_KEY_H && action == GLFW_PRESS)
 	{
 		if (frameIndexPerro < MAX_FRAMES_PERRO)
 			saveFramePerro();
 	}
 
-	// F10  -> play / stop animación perro
-	if (key == GLFW_KEY_F10 && action == GLFW_PRESS)
+	// E  -> play / stop animación perro
+	if (key == GLFW_KEY_E && action == GLFW_PRESS)
 	{
 		if (!playPerro && frameIndexPerro > 1)
 		{
@@ -1296,7 +1309,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 
 	// F11  -> guardar animación perro a archivo
 	if (key == GLFW_KEY_F11 && action == GLFW_PRESS)
-		saveToFilePerro("animacion_perro.txt");
+		saveToFilePerro("animacion_perro2.txt");
 
 	// R  -> cargar animación perro desde archivo
 	if (key == GLFW_KEY_R && action == GLFW_PRESS)
